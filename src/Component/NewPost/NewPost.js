@@ -16,7 +16,7 @@ class NewPost extends Component{
                 title:this.state.title,
                 author:this.state.author,
                 content:this.state.content,
-                date: date.getFullYear()+"-"+ date.getMonth() +"-"+date.getDate(),
+                date: date.getFullYear()+"-"+ parseInt(date.getMonth()+1) +"-"+date.getDate(),
                 time:date.getHours()+":"+date.getMinutes()+":"+date.getSeconds()+"."+date.getMilliseconds()
                 // time:new Date().getTime()
             }
