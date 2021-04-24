@@ -1,0 +1,33 @@
+.maincontent{
+    background-color: #e8eff0;
+    padding: 60px 220px !important;
+    border-radius: 10px;
+}
+.image_style{
+    width: 200px;
+    height: 200px;
+    border-radius:50%;
+}
+
+@media only screen and (min-width:576px) {
+    .maincontent{
+        padding: 30px 60px !important;
+    }
+    
+}
+
+@media only screen and (max-width:425px) {
+    .maincontent{
+        padding: 15px 30px !important;
+       
+    }
+    
+}
+
+@media only screen and (min-width:1100px){
+    .maincontent{
+        background-color: #e8eff0;
+        padding: 60px 220px !important;
+        border-radius: 10px;
+    }
+}

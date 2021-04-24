@@ -1,0 +1,10 @@
+.heading{
+    display: flex;
+    justify-content: space-between;
+    margin: 4px auto;
+}
+
+.author_style{
+    font-size: 14px;
+}
+
