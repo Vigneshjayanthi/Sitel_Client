@@ -26,10 +26,10 @@ class EditPost extends Component {
         let date = new Date();
         const submitHandler = (event) => {
             event.preventDefault();
-
+                console.log(1)
             // console.log(timeval)
             const data = {
-                _id:this.state._id,
+                //_id:this.state._id,
                 title: this.state.title,
                 author: this.state.author,
                 content: this.state.content,
@@ -38,7 +38,8 @@ class EditPost extends Component {
                 // time:new Date().getTime()
                 
             }
-            axios.patch('/'+this.state._id,data).then(response => response.data?window.location.href="/post":"")
+            axios.patch('/'+this.state._id,data).then(response => response.data ?window.location.href="/post":""
+            )
             .catch(error =>{console.log(error)})
            // console.log(data)
         }
