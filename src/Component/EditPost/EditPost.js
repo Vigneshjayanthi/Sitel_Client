@@ -25,20 +25,19 @@ class EditPost extends Component {
     }
   }
   render() {
-    async function submitHandler(event) {
+     const  submitHandler =  async (event) => {
       let date = new Date();
       event.preventDefault();
       const data = {
-        //_id:this.state._id,
         title: this.state.title,
         author: this.state.author,
         content: this.state.content,
         date:date.getFullYear() +"-" + parseInt(date.getMonth() + 1) + "-" + date.getDate(),
-        time: date.getHours() +":" +date.getMinutes() +":" +date.getSeconds() + "." + date.getMilliseconds(),
+        time:date.getHours() +":" +date.getMinutes() +":" +date.getSeconds() + "." + date.getMilliseconds(),
       };
-      // console.log(data)
+      console.log(data)
       try {
-        await axios
+         axios
           .patch("/" + this.state._id, data)
           .then((response) =>
             response.status ? (window.location.href = "/post") : ""
