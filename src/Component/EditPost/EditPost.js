@@ -38,10 +38,10 @@ class EditPost extends Component {
             }
             console.log(data)
             axios.patch('/'+this.state._id,data)
-            .then(response =>{ 
+            .then(response =>
                 response.data ?window.location.href="/post":""
                 //console.log(response.data)
-        })
+        )
             .catch(error =>{console.log(error)})
            // console.log(data)
         }
