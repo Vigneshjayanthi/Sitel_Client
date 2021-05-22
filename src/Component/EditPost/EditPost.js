@@ -26,8 +26,6 @@ class EditPost extends Component {
         let date = new Date();
         const submitHandler = (event) => {
             event.preventDefault();
-                console.log(1)
-            // console.log(timeval)
             const data = {
                 //_id:this.state._id,
                 title: this.state.title,
@@ -41,8 +39,8 @@ class EditPost extends Component {
             console.log(data)
             axios.patch('/'+this.state._id,data)
             .then(response =>{ 
-                //response.data ?window.location.href="/post":"", 
-                console.log(response.data)
+                response.data ?window.location.href="/post":""
+                //console.log(response.data)
         })
             .catch(error =>{console.log(error)})
            // console.log(data)
