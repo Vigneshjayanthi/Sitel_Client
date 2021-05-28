@@ -4,7 +4,7 @@ import Post from "../Post/Post";
 import axios from "../Service/Service";
 
 class Posts extends Component {
-  state = { posts: [], noPost: "" };
+  state = { posts: [], noPost: "" ,showLoader:true};
 
   async componentDidMount() {
       try {
@@ -12,6 +12,7 @@ class Posts extends Component {
         .then((response) => {
             console.log(response)
           this.setState({ posts: response.data });
+          this.setState({showLoader:false})
           this.setState({ noPost: response.data.length === 0 ? (
                 <h1 className="text-danger">No Posts is Available</h1>) : ""});
         })
@@ -38,7 +39,7 @@ class Posts extends Component {
               </span>
             </div>
             <hr />
-            {postIndividual}
+            {this.state.showLoader?<div className="text-center"><div className="spinner-borders text-primary" role="status"></div></div>:postIndividual}
             {this.state.noPost}
           </>
 

@@ -7,4 +7,14 @@
 .author_style{
     font-size: 14px;
 }
+.spinner-borders{
+display: inline-block;
+width: 10rem;
+height: 10rem;
+vertical-align: text-bottom;
+border: .25em solid currentColor;
+border-right-color: transparent;
+border-radius: 50%;
+animation: .75s linear infinite spinner-border;
+}
 
