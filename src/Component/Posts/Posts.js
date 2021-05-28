@@ -29,7 +29,10 @@ class Posts extends Component {
     });
     return (
       <div className="container">
-          <>
+    
+          {this.state.showLoader?<div className="text-center mt-5">
+            <div className="spinner-border spinner-border-xl text-primary" role="status"></div>
+            </div>:<>
             <div className="heading">
               <h1>All Posts</h1>
               <span>
@@ -39,10 +42,11 @@ class Posts extends Component {
               </span>
             </div>
             <hr />
-            {this.state.showLoader?<div className="text-center"><div className="spinner-borders text-primary" role="status"></div></div>:postIndividual}
-            {this.state.noPost}
+           {postIndividual}
+          {this.state.noPost}
           </>
-
+    }
+    
       </div>
     );
   }

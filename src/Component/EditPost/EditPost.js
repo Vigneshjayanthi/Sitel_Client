@@ -8,6 +8,7 @@ class EditPost extends Component {
     content: "",
     post: [],
     _id: "",
+    showLoader: true
   };
   async componentDidMount() {
     try {
@@ -19,25 +20,26 @@ class EditPost extends Component {
           content: res.data.content,
           _id: res.data._id,
         });
+        this.setState({ showLoader: false })
       });
     } catch (error) {
       console.log(error);
     }
   }
   render() {
-     const  submitHandler =  async (event) => {
+    const submitHandler = async (event) => {
       let date = new Date();
       event.preventDefault();
       const data = {
         title: this.state.title,
         author: this.state.author,
         content: this.state.content,
-        date:date.getFullYear() +"-" + parseInt(date.getMonth() + 1) + "-" + date.getDate(),
-        time:date.getHours() +":" +date.getMinutes() +":" +date.getSeconds() + "." + date.getMilliseconds(),
+        date: date.getFullYear() + "-" + parseInt(date.getMonth() + 1) + "-" + date.getDate(),
+        time: date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + "." + date.getMilliseconds(),
       };
       console.log(data)
       try {
-         axios
+        axios
           .patch("/" + this.state._id, data)
           .then((response) =>
             response.status ? (window.location.href = "/post") : ""
@@ -49,62 +51,67 @@ class EditPost extends Component {
 
     return (
       <div className="container">
-        <h1>Editing Post</h1>
-        <hr />
-        <h3>Edit</h3>
-        <form onSubmit={submitHandler}>
-          <div className="form-group">
-            <label htmlFor="Title">Title:</label>
-            <input
-              className="form-control"
-              type="text"
-              name="title"
-              id="Title"
-              value={this.state.title}
-              placeholder="Enter Title"
-              required
-              onChange={(event) => {
-                this.setState({ title: event.target.value });
-              }}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="Author">Author:</label>
-            <input
-              className="form-control"
-              type="text"
-              name="author"
-              id="Author"
-              value={this.state.author}
-              placeholder="Enter Author"
-              required
-              onChange={(event) => {
-                this.setState({ author: event.target.value });
-              }}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="Content">Content:</label>
-            <textarea
-              className="form-control"
-              type="text"
-              name="content"
-              id="Content"
-              rows="3"
-              value={this.state.content}
-              placeholder="Enter Content"
-              required
-              onChange={(event) => {
-                this.setState({ content: event.target.value });
-              }}
-            />
-          </div>
-          <div className="form-group">
-            <button>Save</button>
-          </div>
-        </form>
+        {this.state.showLoader ? <div className="text-center mt-5" width="5rem" height="5rem">
+          <div className="spinner-border text-primary" role="status"></div>
+        </div> : <> <h1>Editing Post</h1>
+          <hr />
+          <h3>Edit</h3>
+          <form onSubmit={submitHandler}>
+            <div className="form-group">
+              <label htmlFor="Title">Title:</label>
+              <input
+                className="form-control"
+                type="text"
+                name="title"
+                id="Title"
+                value={this.state.title}
+                placeholder="Enter Title"
+                required
+                onChange={(event) => {
+                  this.setState({ title: event.target.value });
+                }}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="Author">Author:</label>
+              <input
+                className="form-control"
+                type="text"
+                name="author"
+                id="Author"
+                value={this.state.author}
+                placeholder="Enter Author"
+                required
+                onChange={(event) => {
+                  this.setState({ author: event.target.value });
+                }}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="Content">Content:</label>
+              <textarea
+                className="form-control"
+                type="text"
+                name="content"
+                id="Content"
+                rows="3"
+                value={this.state.content}
+                placeholder="Enter Content"
+                required
+                onChange={(event) => {
+                  this.setState({ content: event.target.value });
+                }}
+              />
+            </div>
+            <div className="form-group">
+              <button>Save</button>
+            </div>
+          </form>
+        </>
+        }
       </div>
     );
+
   }
 }
 
